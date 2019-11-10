@@ -1,0 +1,26 @@
+{% load socialaccount %}
+{% load account %}
+
+
+
+<h1>ALLAUTH</h1>
+{% if user.is_authenticated %}
+
+
+<p>{{ user.email }}</p>
+<p>Welcome {{ user.first_name }} {{user.last_name}}!!!</p>
+<p>
+<img src="{{user.socialaccount_set.all.0.get_avatar_url}}"/>
+</p>
+
+
+
+<a href = "{%url 'account_logout' %}">LOGOUT</a>
+
+
+
+{% else %}
+<a href="{% provider_login_url 'google' %}">LOG IN</a>
+{% endif %}
+
+
